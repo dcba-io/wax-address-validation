@@ -16,7 +16,8 @@ const MainButton = ({ label }) => {
              active:bg-dark-gray active:shadow-lg
             transition
             duration-150
-            ease-in-out">{label}
+            ease-in-out">
+            {label}
         </button>
     );
 }

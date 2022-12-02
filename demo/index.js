@@ -1,16 +1,18 @@
+const cors = require("cors");
 const fs = require("fs");
 const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = 3000;
+const port = 3500;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use(express.static("build"));
 
 app.post("/api/register", (req, res) => {
-  const { username, password, info } = req.body;
+  var { username, password, info } = req.body;
 
   if (!info) info = "";
 
@@ -45,6 +47,8 @@ app.post("/api/login", (req, res) => {
     return;
   }
 
+  let users = loadUsers();
+
   if (!users.find(u => u.username === username && u.password === password)) {
     res.send({ result: false, error: "The credentials do not match" });
     return;
@@ -64,7 +68,7 @@ function loadUsers() {
 }
 
 function saveUsers(users) {
-  fs.writeFileSync("users.json", JSON.parse(users), { encoding: "utf-8" });
+  fs.writeFileSync("users.json", JSON.stringify(users), { encoding: "utf-8" });
 }
 
 app.listen(port, () => {

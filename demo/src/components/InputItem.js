@@ -1,15 +1,17 @@
-const InputItem = ({ errorMessage, inputType, label, labelFor }) => {
+
+const InputItem = ({ inputType, label, onChange, labelFor, value }) => {
   return (
     <div className="mb-4">
       <label
         htmlFor={labelFor}
-        className="form-label inline-block mb-2 text-sm text-dark-gray"
-      >
+        className="form-label inline-block mb-2 text-sm text-dark-gray">
         {label}
       </label>
       <input
         id={labelFor}
         type={inputType}
+        value={value}
+        onChange={onChange}
         className="block
                   w-full
                   h-8
@@ -23,7 +25,6 @@ const InputItem = ({ errorMessage, inputType, label, labelFor }) => {
                   shadow-xs
                   rounded m-0"
       />
-      <span className="text-sm text-red">{errorMessage}</span>
     </div>
   );
 };
