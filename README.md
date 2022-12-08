@@ -10,7 +10,7 @@ As the WAX chain is a fork of EOSIO, this contract can be used for any chain der
 
 View documentation [here](https://docs.dcba.io/wax-address-validation)
 
-##Licence
+## Licence
 
 MIT
 
