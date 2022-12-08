@@ -1,6 +1,9 @@
-const MainButton = ({ label }) => {
-    return (
-        <button type="submit" className="
+const MainButton = ({ label, onClick }) => {
+  return (
+    <button
+      type="submit"
+      onClick={onClick}
+      className="
             w-2/6
             py-2.5
              bg-dark-blue
@@ -16,10 +19,11 @@ const MainButton = ({ label }) => {
              active:bg-dark-gray active:shadow-lg
             transition
             duration-150
-            ease-in-out">
-            {label}
-        </button>
-    );
-}
+            ease-in-out"
+    >
+      {label}
+    </button>
+  );
+};
 
 export default MainButton;

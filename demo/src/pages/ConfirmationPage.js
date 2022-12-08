@@ -1,8 +1,26 @@
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MdDone } from "react-icons/md";
+
+import { UserContext } from "../context/UserContext";
 
 import Layout from "../components/Layout";
 
 function ConfirmationPage() {
+  const { user } = useContext(UserContext);
+  const [state, setState] = useState("init");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    } else {
+      setState("loaded");
+    }
+  }, [user]);
+
+  if (state === "init") return null;
+
   return (
     <Layout>
       <div className="md:flex md:flex-row justify-center h-screen">
