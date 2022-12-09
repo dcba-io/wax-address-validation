@@ -274,6 +274,10 @@ app.post("/api/login", (req, res) => {
   res.send({ result: true });
 });
 
+app.get("/*", function(req, res) {
+  res.redirect("/");
+});
+
 //
 
 function loadUsers() {
